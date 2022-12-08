@@ -2,17 +2,7 @@ const router = require('express').Router();
 const Joi = require('joi');
 const moment = require('moment');
 const {
-    serverRepositoryOb,
-    serverControllerOb,
-    messageControllerOb,
     shopControllerOb,
-    productControllerOb,
-    cartControllerOb,
-    cartProductControllerOb,
-    orderControllerOb,
-    orderProductControllerOb,
-    customerControllerOb,
-    orderStateControllerOb
 } = require('../dependencies/');
 
 router.get('/shops/', shopControllerOb.list);
@@ -20,35 +10,6 @@ router.get('/shops/', shopControllerOb.list);
 router.get('/shops/catalog', productControllerOb.list);
 router.get('/shops/catalog/:id', productControllerOb.listByShop);
 router.get('/shops/catalog/detail/:id', productControllerOb.listById);
-
-router.get('/cart/', cartControllerOb.list);
-router.get('/cart/user/', cartControllerOb.listByIdUser);
-router.get('/cart/shop/:idShop/state/:state', cartControllerOb.listByIdUserAndIdShop);
-
-router.get('/cart/:idCart', cartProductControllerOb.listById);
-router.put('/cart/', cartProductControllerOb.add);
-router.delete('/cart/product/', cartProductControllerOb.delete);
-router.patch('/cart/product/', cartProductControllerOb.update);
-
-router.get('/order/', orderControllerOb.list);
-router.put('/order/byCart/', orderControllerOb.addFromCart);
-router.get('/order/customer/', orderControllerOb.listByIdCustomer);
-router.get('/order/shop/', orderControllerOb.listByIdShop);
-router.get('/order/:id/:hash', orderControllerOb.listById);
-
-router.get('/order/product/:id', orderProductControllerOb.listById);
-
-router.patch('/order/:id/', orderControllerOb.update);
-
-router.get('/customer/', customerControllerOb.list);
-router.put('/customer/', customerControllerOb.add);
-router.post('/customer/login/', customerControllerOb.login);
-
-router.get('/order/states/', orderStateControllerOb.list);
-
-
-
-
 
 function listByServer(req, res, next){
     const schema = Joi.object({
