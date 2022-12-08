@@ -2,7 +2,7 @@
   "development": {
     "username": "admin",
     "password": "1234",
-    "database": "marketplace_moda",
+    "database": "marketplace_moda_microservices_shop_and_product",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

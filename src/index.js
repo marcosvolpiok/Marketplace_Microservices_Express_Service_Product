@@ -4,14 +4,8 @@ const express = require('express'),
     bodyParser = require('body-parser');
     cors = require('cors');
 
-// importing routes
-const indexRoutes = require('./routes/index');
-
 const graphqlHTTP = require("express-graphql");
 const schema = require("./graphql/schema");
-
-const checkAuth = require('./middlewares/checkAuth');
-
 
 //app.use(bodyParser.json());
 app.use(express.json());
@@ -25,12 +19,6 @@ app.use(cors());
 
 // middlewares
 app.use(morgan('dev'));
-//app.use(express.urlencoded({extended: true}))
-app.use(checkAuth);
-
-
-// routes
-app.use('/', indexRoutes);
 
 // error handler
 app.use(function(err, req, res, next){
